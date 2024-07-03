@@ -13,3 +13,10 @@ TEST(TestCaseName, Deposit) {
     int ret = account.getBalance();
     EXPECT_EQ(10500, ret);
 }
+
+TEST(TestCaseName, Withdraw) {
+    Account account{ 10000 };
+    account.withdraw(600);
+    int ret = account.getBalance();
+    EXPECT_EQ(9400, ret);
+}

@@ -14,6 +14,12 @@ public:
     {
         balance += money;
     }
+
+    void withdraw(int money)
+    {
+        balance -= money;
+    }
+
 private:
     int balance;
 };
