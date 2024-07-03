@@ -1,11 +1,11 @@
 class Account
 {
 public:
-    Account(int money) : balance { money }
+    Account(double money) : balance { money }
     {
     }
 
-    int getBalance()
+    double getBalance()
     {
         return balance;
     }
@@ -20,6 +20,30 @@ public:
         balance -= money;
     }
 
+    void getInterest(void)
+    {
+        double i = balance * interestRate;
+        balance += i;
+    }
+
+    void SetInterestRate(double rate)
+    {
+        this->interestRate = rate;
+    }
+
+    double predictInterest(int year)
+    {
+        double predictBalance = balance;
+        
+        for (int y = 0; y < year; y++)
+        {
+            double i = predictBalance * interestRate;
+            predictBalance += i;
+        }
+        
+        return predictBalance;
+    }
 private:
-    int balance;
+    double balance;
+    double interestRate;
 };
