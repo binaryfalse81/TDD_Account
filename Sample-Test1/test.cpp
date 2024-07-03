@@ -1,22 +1,28 @@
 #include "pch.h"
 #include "../Project1/account.cpp"
 
-TEST(TestCaseName, CreateAccountInit10000) {
-    Account account { 10000 };
-    int ret = account.getBalance();
-    EXPECT_EQ(10000, ret);
+class AccountFixture : public testing::Test
+{
+public:
+    Account account{ 10000 };
+
+    void checkBalance(int expected)
+    {
+        int ret = account.getBalance();
+        EXPECT_EQ(expected, ret);
+    }
+};
+
+TEST_F(AccountFixture, CreateAccountInit10000) {
+    checkBalance(10000);
 }
 
-TEST(TestCaseName, Deposit) {
-    Account account{ 10000 };
+TEST_F(AccountFixture, Deposit) {
     account.deposit(500);
-    int ret = account.getBalance();
-    EXPECT_EQ(10500, ret);
+    checkBalance(10500);
 }
 
-TEST(TestCaseName, Withdraw) {
-    Account account{ 10000 };
+TEST_F(AccountFixture, Withdraw) {
     account.withdraw(600);
-    int ret = account.getBalance();
-    EXPECT_EQ(9400, ret);
+    checkBalance(9400);
 }
