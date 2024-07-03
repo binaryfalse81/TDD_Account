@@ -29,9 +29,9 @@ TEST_F(AccountFixture, Withdraw) {
 
 TEST_F(AccountFixture, Interest) {
     account.SetInterestRate(0.05);
-    account.getInterest();
+    account.ApplyInterest();
     checkBalance(10500);
-    account.getInterest();
+    account.ApplyInterest();
     checkBalance(11025);
 }
 
@@ -41,7 +41,7 @@ TEST_F(AccountFixture, predictInterest) {
     
     for (int i = 0; i < 100; i++)
     {
-        account.getInterest();
+        account.ApplyInterest();
     }
 
     checkBalance(predictBalance);

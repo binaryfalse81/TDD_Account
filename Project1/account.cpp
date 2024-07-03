@@ -20,7 +20,7 @@ public:
         balance -= money;
     }
 
-    void getInterest(void)
+    void ApplyInterest(void)
     {
         double i = balance * interestRate;
         balance += i;
@@ -43,6 +43,7 @@ public:
         
         return predictBalance;
     }
+
 private:
     double balance;
     double interestRate;
